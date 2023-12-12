@@ -4,22 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trick Generator</title>
+    <link rel="stylesheet" href="button-reset.css">
     <style>
         body {
             background-color: #7d2399;
             color: #eee;
             text-shadow: 2px 2px #333;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .container {
-            max-width: 420px;
-            margin: 36px auto;
+            max-width: 500px;
+            margin: auto;
+            padding: 36px;
             justify-content: center;
         }
 
         .stack {
             display: flex;
             flex-direction: column;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        button {
+            width: 36px;
+            height: 36px;
+            background: #310d3c;
+            color: #eee;
         }
 
         @keyframes jump {
@@ -38,8 +53,10 @@
 <body>
     <div class="container stack">
         <img src="abomination-wizard.png" alt="skate wizard smoking credit pipe" id="wizard" />
-        <button id="generate">Random trick</button>
-        <h3 id="result"></h3>
+        <div class="row">
+            <h3 id="result"></h3>
+            <button id="generate">&#8635</button>
+        </div>
     </div>
 </body>
 <script>
@@ -55,13 +72,17 @@ function roll() {
 
 const getTrick = () => `${one[roll()]} ${two[roll()]} ${three[roll()]} with a ${four[roll()]} ${five[roll()]}`
 
-document.getElementById('generate').addEventListener('click', () => {
+const manifestTrick = () => {
     document.getElementById('result').innerHTML = getTrick()
     const wizard = document.getElementById('wizard')
     wizard.classList.remove('jump')
     void wizard.offsetWidth
     wizard.classList.add('jump')
-})
+}
+
+document.getElementById('generate').addEventListener('click', manifestTrick)
+document.getElementById('wizard').addEventListener('click', manifestTrick)
+manifestTrick()
 
 </script>
 </html>
