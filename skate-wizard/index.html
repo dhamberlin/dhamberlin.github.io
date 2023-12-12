@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trick Generator</title>
-    <link rel="stylesheet" href="button-reset.css">
     <style>
         body {
             background-color: #7d2399;
@@ -12,31 +11,19 @@
             text-shadow: 2px 2px #333;
             font-family: Arial, Helvetica, sans-serif;
         }
-
         .container {
-            max-width: 500px;
             margin: auto;
             padding: 36px;
-            justify-content: center;
         }
-
         .stack {
             display: flex;
             flex-direction: column;
-        }
-
-        .row {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
         }
-        button {
-            width: 36px;
-            height: 36px;
-            background: #310d3c;
-            color: #eee;
+        #wizard {
+            max-width: 420px;
+            cursor: pointer;
         }
-
         @keyframes jump {
         0%   {transform: translateY(0) rotateZ(0)}
         40% {transform: translateY(-2.6%) rotateZ(-2deg)}
@@ -55,7 +42,6 @@
         <img src="abomination-wizard.png" alt="skate wizard smoking credit pipe" id="wizard" />
         <div class="row">
             <h3 id="result"></h3>
-            <button id="generate">&#8635</button>
         </div>
     </div>
 </body>
@@ -80,7 +66,6 @@ const manifestTrick = () => {
     wizard.classList.add('jump')
 }
 
-document.getElementById('generate').addEventListener('click', manifestTrick)
 document.getElementById('wizard').addEventListener('click', manifestTrick)
 manifestTrick()
 
