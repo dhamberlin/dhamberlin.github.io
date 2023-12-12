@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="generate">Random trick</button>
+    <h3 id="result"></h3>
+</body>
+<script>
+    const one = [
+  "steady",
+  "floating",
+  "rotated",
+  "inverted",
+  "greasy",
+  "upside",
+  "greyside",
+  "purring",
+  "barky",
+  "soggy",
+  "reversed",
+  "fuzzy",
+  "hanging",
+  "salty",
+  "thirsty",
+  "curvy",
+  "parallax",
+  "highlow",
+  "side",
+  "crunchy"
+];
+
+const two = [
+  "roll",
+  "puff",
+  "skizzle",
+  "nutsome",
+  "chafer",
+  "yanker",
+  "burner",
+  "monger",
+  "dilly",
+  "jortle",
+  "crunchy",
+  "thwappy",
+  "snappy",
+  "clapper",
+  "stoney",
+  "punted",
+  "wiggle",
+  "shooketh",
+  "pendulous",
+  "doppler"
+];
+
+const three = [
+  "frazz",
+  "burner",
+  "dump",
+  "chunt",
+  "breff",
+  "plop",
+  "nay",
+  "whizz",
+  "knob",
+  "goat",
+  "bruh",
+  "flex",
+  "cap",
+  "tope",
+  "smash",
+  "plug",
+  "mofo",
+  "seam",
+  "blaze",
+  "streak"
+];
+
+const four = [
+  "grumble",
+  "stunted",
+  "lazy",
+  "glitchy",
+  "wrinkle",
+  "rising",
+  "saucy",
+  "flabby",
+  "wumpus",
+  "fuddy",
+  "lickety",
+  "muffin",
+  "whirly",
+  "squeegee",
+  "wishy",
+  "diddle",
+  "fripper",
+  "wishy",
+  "saluting",
+  "blubber"
+];
+
+const five = [
+  "twist",
+  "pop",
+  "mast",
+  "drip",
+  "hole",
+  "melter",
+  "smack",
+  "schmooze",
+  "dollop",
+  "boo",
+  "daddle",
+  "pronk",
+  "hog",
+  "wink",
+  "spleen",
+  "fop",
+  "roll",
+  "bend",
+  "choke",
+  "dingle"
+];
+
+function roll() {
+  return Math.floor(Math.random() * 20);
+}
+
+const getTrick = () => `${one[roll()]} ${two[roll()]} ${three[roll()]} with a ${four[roll()]} ${five[roll()]}`
+
+document.getElementById('generate').addEventListener('click', () => {
+    document.getElementById('result').innerHTML = getTrick()
+})
+
+</script>
+</html>
