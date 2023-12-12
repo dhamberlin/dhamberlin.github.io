@@ -3,11 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Trick Generator</title>
+    <style>
+        body {
+            background-color: #7d2399;
+            color: #eee;
+            text-shadow: 2px 2px #333;
+        }
+
+        .container {
+            max-width: 420px;
+            margin: 36px auto;
+            justify-content: center;
+        }
+
+        .stack {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
 <body>
-    <button id="generate">Random trick</button>
-    <h3 id="result"></h3>
+    <div class="container stack">
+        <img src="abomination-wizard.png" alt="skate wizard smoking credit pipe" />
+        <button id="generate">Random trick</button>
+        <h3 id="result"></h3>
+    </div>
 </body>
 <script>
     const one = [
