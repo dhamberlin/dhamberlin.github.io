@@ -5,15 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trick Generator</title>
     <style>
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
         body {
-            background-color: #7d2399;
+            background: linear-gradient(109.6deg, rgb(52, 52, 151) 11.2%, rgb(144, 6, 161) 53.7%, rgb(0, 212, 255) 100.2%); 
+            height: 100vh;
             color: #eee;
             text-shadow: 2px 2px #333;
             font-family: Arial, Helvetica, sans-serif;
+            background-size: 400% 100%;
+	        animation: gradient 420s ease infinite;
         }
+
+       
+
         .container {
             margin: auto;
-            padding: 36px;
+            padding: 69px;
         }
         .stack {
             display: flex;
@@ -25,15 +44,36 @@
             cursor: pointer;
         }
         @keyframes jump {
-        0%   {transform: translateY(0) rotateZ(0)}
-        40% {transform: translateY(-2.6%) rotateZ(-2deg)}
-        50% {transform: translateY(-3%) rotateZ(0)}
-        60% {transform: translateY(-2.6%) rotateZ(.6deg);}
-        100% {transform: translateY(0)  rotateZ(0)}
+            0%   {transform: translateY(0) rotateZ(0)}
+            40% {transform: translateY(-2.6%) rotateZ(-2deg)}
+            50% {transform: translateY(-3%) rotateZ(0)}
+            60% {transform: translateY(-2.6%) rotateZ(.6deg);}
+            100% {transform: translateY(0)  rotateZ(0)}
         }
         .jump {
-            transform-origin: 50% 50%;
             animation: jump .3s ease-in-out;
+        }
+
+        @keyframes flip {
+            0%   {transform: translateY(0) rotateZ(0)}
+            50% {transform: translateY(-10%) rotateZ(180deg) }
+            100% {transform: translateY(0)  rotateZ(360deg)}
+        }
+        .flip {
+            animation: flip .3s linear;
+        }
+
+        @keyframes fuckphysics {
+            0%   {transform: translateY(0) rotateZ(0)}
+            15% {transform: translateY(-13%) rotateZ(20deg)}
+            22% {transform: translateY(-17%) rotateZ(-240deg)}
+            33% {transform: translateY(-19%) rotateZ(-270deg) }
+            66% {transform: translateY(-21%) rotateZ(-274deg) }
+            80% {transform: translateY(-6%) rotateZ(10deg);}
+            100% {transform: translateY(0)  rotateZ(0)}
+        }
+        .fuck-physics {
+            animation: fuckphysics 1.2s ease-out;
         }
     </style>
 </head>
@@ -58,12 +98,25 @@ function roll() {
 
 const getTrick = () => `${one[roll()]} ${two[roll()]} ${three[roll()]} with a ${four[roll()]} ${five[roll()]}`
 
+const trickClasses = {
+    jump: 'jump',
+    flip: 'flip',
+    fuckPhysics: 'fuck-physics'
+}
+const getTrickClass = () => {
+    const rand = Math.random()
+    if (rand < .1) return trickClasses.fuckPhysics
+    if (rand < .3) return trickClasses.flip
+    return trickClasses.jump
+}
+const removeClasses = (wizardEl) => Object.values(trickClasses).forEach(c => wizardEl.classList.remove(c))
+
 const manifestTrick = () => {
     document.getElementById('result').innerHTML = getTrick()
     const wizard = document.getElementById('wizard')
-    wizard.classList.remove('jump')
+    removeClasses(wizard)
     void wizard.offsetWidth
-    wizard.classList.add('jump')
+    wizard.classList.add(getTrickClass())
 }
 
 document.getElementById('wizard').addEventListener('click', manifestTrick)
