@@ -44,6 +44,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        height: 100%;
       }
 
       #wizard {
@@ -51,8 +53,13 @@
         max-width: 420px;
         cursor: pointer;
       }
-      #result {
+      #result,
+      p {
         text-align: center;
+      }
+
+      #result::first-letter {
+        text-transform: capitalize;
       }
 
       /* Trick animations */
@@ -129,6 +136,7 @@
       />
       <div class="row">
         <h3 id="result"></h3>
+        <p>Tap the wizard for a fresh trick</p>
       </div>
     </div>
   </body>
