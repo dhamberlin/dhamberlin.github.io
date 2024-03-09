@@ -1,126 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trick Generator</title>
     <style>
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
 
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+      body {
+        background: linear-gradient(
+          109.6deg,
+          rgb(52, 52, 151) 11.2%,
+          rgb(144, 6, 161) 53.7%,
+          rgb(0, 212, 255) 100.2%
+        );
+        height: 100vh;
+        color: #eee;
+        text-shadow: 2px 2px #333;
+        font-family: Arial, Helvetica, sans-serif;
+        background-size: 400% 100%;
+        animation: gradient 420s ease infinite;
+      }
 
-        body {
-            background: linear-gradient(109.6deg, rgb(52, 52, 151) 11.2%, rgb(144, 6, 161) 53.7%, rgb(0, 212, 255) 100.2%); 
-            height: 100vh;
-            color: #eee;
-            text-shadow: 2px 2px #333;
-            font-family: Arial, Helvetica, sans-serif;
-            background-size: 400% 100%;
-	        animation: gradient 420s ease infinite;
+      .container {
+        margin: auto;
+        padding: 69px;
+      }
+      .stack {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #wizard {
+        max-width: 420px;
+        cursor: pointer;
+      }
+      @keyframes jump {
+        0% {
+          transform: translateY(0) rotateZ(0);
         }
+        40% {
+          transform: translateY(-2.6%) rotateZ(-2deg);
+        }
+        50% {
+          transform: translateY(-3%) rotateZ(0);
+        }
+        60% {
+          transform: translateY(-2.6%) rotateZ(0.6deg);
+        }
+        100% {
+          transform: translateY(0) rotateZ(0);
+        }
+      }
+      .jump {
+        animation: jump 0.3s ease-in-out;
+      }
 
-       
+      @keyframes flip {
+        0% {
+          transform: translateY(0) rotateZ(0);
+        }
+        50% {
+          transform: translateY(-10%) rotateZ(180deg);
+        }
+        100% {
+          transform: translateY(0) rotateZ(360deg);
+        }
+      }
+      .flip {
+        animation: flip 0.3s linear;
+      }
 
-        .container {
-            margin: auto;
-            padding: 69px;
+      @keyframes fuckphysics {
+        0% {
+          transform: translateY(0) rotateZ(0);
         }
-        .stack {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        15% {
+          transform: translateY(-13%) rotateZ(20deg);
         }
-        #wizard {
-            max-width: 420px;
-            cursor: pointer;
+        22% {
+          transform: translateY(-17%) rotateZ(-240deg);
         }
-        @keyframes jump {
-            0%   {transform: translateY(0) rotateZ(0)}
-            40% {transform: translateY(-2.6%) rotateZ(-2deg)}
-            50% {transform: translateY(-3%) rotateZ(0)}
-            60% {transform: translateY(-2.6%) rotateZ(.6deg);}
-            100% {transform: translateY(0)  rotateZ(0)}
+        33% {
+          transform: translateY(-19%) rotateZ(-270deg);
         }
-        .jump {
-            animation: jump .3s ease-in-out;
+        66% {
+          transform: translateY(-21%) rotateZ(-274deg);
         }
-
-        @keyframes flip {
-            0%   {transform: translateY(0) rotateZ(0)}
-            50% {transform: translateY(-10%) rotateZ(180deg) }
-            100% {transform: translateY(0)  rotateZ(360deg)}
+        80% {
+          transform: translateY(-6%) rotateZ(10deg);
         }
-        .flip {
-            animation: flip .3s linear;
+        100% {
+          transform: translateY(0) rotateZ(0);
         }
-
-        @keyframes fuckphysics {
-            0%   {transform: translateY(0) rotateZ(0)}
-            15% {transform: translateY(-13%) rotateZ(20deg)}
-            22% {transform: translateY(-17%) rotateZ(-240deg)}
-            33% {transform: translateY(-19%) rotateZ(-270deg) }
-            66% {transform: translateY(-21%) rotateZ(-274deg) }
-            80% {transform: translateY(-6%) rotateZ(10deg);}
-            100% {transform: translateY(0)  rotateZ(0)}
-        }
-        .fuck-physics {
-            animation: fuckphysics 1.2s ease-out;
-        }
+      }
+      .fuck-physics {
+        animation: fuckphysics 1.2s ease-out;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container stack">
-        <img src="abomination-wizard.png" alt="skate wizard smoking credit pipe" id="wizard" />
-        <div class="row">
-            <h3 id="result"></h3>
-        </div>
+      <img
+        src="abomination-wizard.png"
+        alt="skate wizard smoking credit pipe"
+        id="wizard"
+      />
+      <div class="row">
+        <h3 id="result"></h3>
+      </div>
     </div>
-</body>
-<script>
-const one = ["steady","floating","rotated","inverted","greasy","upside","greyside","purring","barky","soggy","reversed","fuzzy","hanging","salty","thirsty","curvy","parallax","highlow","side","crunchy"]
-const two = ["roll","puff","skizzle","nutsome","chafer","yanker","burner","monger","dilly","jortle","crunchy","thwappy","snappy","clapper","stoney","punted","wiggle","shooketh","pendulous","doppler"];
-const three = ["frazz","burner","dump","chunt","breff","plop","nay","whizz","knob","goat","bruh","flex","cap","tope","smash","plug","mofo","seam","blaze","streak"];
-const four = ["grumble","stunted","lazy","glitchy","wrinkle","rising","saucy","flabby","wumpus","fuddy","lickety","muffin","whirly","squeegee","wishy","diddle","fripper","wishy","saluting","blubber"];
-const five = ["twist","pop","mast","drip","hole","melter","smack","schmooze","dollop","boo","daddle","pronk","hog","wink","spleen","fop","roll","bend","choke","dingle"];
+  </body>
+  <script>
+    const one = [
+      "steady",
+      "floating",
+      "rotated",
+      "inverted",
+      "greasy",
+      "upside",
+      "greyside",
+      "purring",
+      "barky",
+      "soggy",
+      "reversed",
+      "fuzzy",
+      "hanging",
+      "salty",
+      "thirsty",
+      "curvy",
+      "parallax",
+      "highlow",
+      "side",
+      "crunchy",
+    ];
+    const two = [
+      "roll",
+      "puff",
+      "skizzle",
+      "nutsome",
+      "chafer",
+      "yanker",
+      "burner",
+      "monger",
+      "dilly",
+      "jortle",
+      "crunchy",
+      "thwappy",
+      "snappy",
+      "clapper",
+      "stoney",
+      "punted",
+      "wiggle",
+      "shooketh",
+      "pendulous",
+      "doppler",
+    ];
+    const three = [
+      "frazz",
+      "burner",
+      "dump",
+      "chunt",
+      "breff",
+      "plop",
+      "nay",
+      "whizz",
+      "knob",
+      "goat",
+      "bruh",
+      "flex",
+      "cap",
+      "tope",
+      "smash",
+      "plug",
+      "mofo",
+      "seam",
+      "blaze",
+      "streak",
+    ];
+    const four = [
+      "grumble",
+      "stunted",
+      "lazy",
+      "glitchy",
+      "wrinkle",
+      "rising",
+      "saucy",
+      "flabby",
+      "wumpus",
+      "fuddy",
+      "lickety",
+      "muffin",
+      "whirly",
+      "squeegee",
+      "wishy",
+      "diddle",
+      "fripper",
+      "wishy",
+      "saluting",
+      "blubber",
+    ];
+    const five = [
+      "twist",
+      "pop",
+      "mast",
+      "drip",
+      "hole",
+      "melter",
+      "smack",
+      "schmooze",
+      "dollop",
+      "boo",
+      "daddle",
+      "pronk",
+      "hog",
+      "wink",
+      "spleen",
+      "fop",
+      "roll",
+      "bend",
+      "choke",
+      "dingle",
+    ];
 
-function roll() {
-  return Math.floor(Math.random() * 20);
-}
+    function roll() {
+      return Math.floor(Math.random() * 20);
+    }
 
-const getTrick = () => `${one[roll()]} ${two[roll()]} ${three[roll()]} with a ${four[roll()]} ${five[roll()]}`
+    const getTrick = () =>
+      `${one[roll()]} ${two[roll()]} ${three[roll()]} with a ${four[roll()]} ${
+        five[roll()]
+      }`;
 
-const trickClasses = {
-    jump: 'jump',
-    flip: 'flip',
-    fuckPhysics: 'fuck-physics'
-}
-const getTrickClass = () => {
-    const rand = Math.random()
-    if (rand < .2) return trickClasses.fuckPhysics
-    if (rand < .3) return trickClasses.flip
-    return trickClasses.jump
-}
-const removeClasses = (wizardEl) => Object.values(trickClasses).forEach(c => wizardEl.classList.remove(c))
+    const trickClasses = {
+      jump: "jump",
+      flip: "flip",
+      fuckPhysics: "fuck-physics",
+    };
+    const getTrickClass = () => {
+      const rand = Math.random();
+      if (rand < 0.2) return trickClasses.fuckPhysics;
+      if (rand < 0.3) return trickClasses.flip;
+      return trickClasses.jump;
+    };
+    const removeClasses = (wizardEl) =>
+      Object.values(trickClasses).forEach((c) => wizardEl.classList.remove(c));
 
-const manifestTrick = () => {
-    document.getElementById('result').innerHTML = getTrick()
-    const wizard = document.getElementById('wizard')
-    removeClasses(wizard)
-    void wizard.offsetWidth
-    wizard.classList.add(getTrickClass())
-}
+    const manifestTrick = () => {
+      document.getElementById("result").innerHTML = getTrick();
+      const wizard = document.getElementById("wizard");
+      removeClasses(wizard);
+      void wizard.offsetWidth;
+      wizard.classList.add(getTrickClass());
+    };
 
-document.getElementById('wizard').addEventListener('click', manifestTrick)
-manifestTrick()
-
-</script>
+    document.getElementById("wizard").addEventListener("click", manifestTrick);
+    manifestTrick();
+  </script>
 </html>
