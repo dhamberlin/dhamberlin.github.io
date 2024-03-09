@@ -22,7 +22,7 @@
         width: 100vw;
         margin: 0;
         padding: 0;
-        overflow: hidden;
+        overflow-x: hidden;
         color: #eee;
         text-shadow: 2px 2px #333;
         font-family: Arial, Helvetica, sans-serif;
@@ -32,13 +32,13 @@
           rgb(144, 6, 161) 53.7%,
           rgb(52, 52, 151) 100.2%
         );
-        background-size: 400% 100%;
-        animation: gradient 420s ease infinite;
+        background-size: 400% 200%;
+        animation: gradient 20s ease infinite;
       }
 
       .container {
         margin: auto;
-        padding: 13px;
+        padding: 0 13px;
       }
       .stack {
         display: flex;
@@ -58,7 +58,7 @@
         text-align: center;
       }
       #result {
-        height: 42px;
+        min-height: 42px;
       }
 
       #result::first-letter {
