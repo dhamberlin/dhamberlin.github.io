@@ -24,7 +24,6 @@
         padding: 0;
         overflow: hidden;
         color: #eee;
-        text-shadow: 2px 2px #333;
         font-family: Arial, Helvetica, sans-serif;
         background: linear-gradient(
           109.6deg,
@@ -53,16 +52,33 @@
         max-height: 50%;
         cursor: pointer;
       }
-      #result,
       p {
         text-align: center;
+        text-shadow: 2px 2px #333;
+        margin: 0;
+        padding: 4px 0;
+      }
+      #result-container {
+        min-height: 2.75rem;
+        display: flex;
+        align-items: center;
+        padding: 4px 0;
       }
       #result {
-        min-height: 2.75rem;
+        text-align: center;
+        text-shadow: 2px 2px #333;
+        margin: 0;
       }
 
       #result::first-letter {
         text-transform: capitalize;
+      }
+
+      a {
+        font-size: small;
+        display: block;
+        text-align: center;
+        color: #eee;
       }
 
       /* Trick animations */
@@ -147,8 +163,11 @@
         id="wizard"
       />
       <div class="row">
-        <h3 id="result"></h3>
+        <div id="result-container">
+          <h3 id="result"></h3>
+        </div>
         <p>Tap the wizard for a fresh trick</p>
+        <a href="https://michaelchsiung.itch.io/">Check out Skate Wizards</a>
       </div>
     </div>
   </body>
