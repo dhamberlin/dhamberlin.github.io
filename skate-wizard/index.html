@@ -91,8 +91,11 @@
         0% {
           transform: translateY(0) rotateZ(0);
         }
-        50% {
-          transform: translateY(-10%) rotateZ(180deg);
+        33% {
+          transform: translateY(-10%) rotateZ(120deg);
+        }
+        66% {
+          transform: translateY(-10%) rotateZ(240deg);
         }
         100% {
           transform: translateY(0) rotateZ(360deg);
@@ -270,7 +273,15 @@
       fuckPhysics: "fuck-physics",
     }
 
+    const getQueryTrick = () => {
+      const params = new URLSearchParams(window.location.search)
+      return trickClasses[params.get("trick")]
+    }
+
     const getTrickClass = () => {
+      const queryTrip = getQueryTrick()
+      if (queryTrip) return queryTrip
+
       const rand = Math.random()
       if (rand < 0.2) return trickClasses.fuckPhysics
       if (rand < 0.3) return trickClasses.flip
