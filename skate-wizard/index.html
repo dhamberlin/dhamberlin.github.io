@@ -25,6 +25,10 @@
           rgb(0, 212, 255) 100.2%
         );
         height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
         color: #eee;
         text-shadow: 2px 2px #333;
         font-family: Arial, Helvetica, sans-serif;
@@ -34,17 +38,24 @@
 
       .container {
         margin: auto;
-        padding: 69px;
+        padding: 13px;
       }
       .stack {
         display: flex;
         flex-direction: column;
         align-items: center;
       }
+
       #wizard {
+        width: 90%;
         max-width: 420px;
         cursor: pointer;
       }
+      #result {
+        text-align: center;
+      }
+
+      /* Trick animations */
       @keyframes jump {
         0% {
           transform: translateY(0) rotateZ(0);
@@ -143,7 +154,7 @@
       "highlow",
       "side",
       "crunchy",
-    ];
+    ]
     const two = [
       "roll",
       "puff",
@@ -165,7 +176,7 @@
       "shooketh",
       "pendulous",
       "doppler",
-    ];
+    ]
     const three = [
       "frazz",
       "burner",
@@ -187,7 +198,7 @@
       "seam",
       "blaze",
       "streak",
-    ];
+    ]
     const four = [
       "grumble",
       "stunted",
@@ -209,7 +220,7 @@
       "wishy",
       "saluting",
       "blubber",
-    ];
+    ]
     const five = [
       "twist",
       "pop",
@@ -231,40 +242,42 @@
       "bend",
       "choke",
       "dingle",
-    ];
+    ]
 
     function roll() {
-      return Math.floor(Math.random() * 20);
+      return Math.floor(Math.random() * 20)
     }
 
     const getTrick = () =>
       `${one[roll()]} ${two[roll()]} ${three[roll()]} with a ${four[roll()]} ${
         five[roll()]
-      }`;
+      }`
 
     const trickClasses = {
       jump: "jump",
       flip: "flip",
       fuckPhysics: "fuck-physics",
-    };
+    }
+
     const getTrickClass = () => {
-      const rand = Math.random();
-      if (rand < 0.2) return trickClasses.fuckPhysics;
-      if (rand < 0.3) return trickClasses.flip;
-      return trickClasses.jump;
-    };
+      const rand = Math.random()
+      if (rand < 0.2) return trickClasses.fuckPhysics
+      if (rand < 0.3) return trickClasses.flip
+      return trickClasses.jump
+    }
+
     const removeClasses = (wizardEl) =>
-      Object.values(trickClasses).forEach((c) => wizardEl.classList.remove(c));
+      Object.values(trickClasses).forEach((c) => wizardEl.classList.remove(c))
 
     const manifestTrick = () => {
-      document.getElementById("result").innerHTML = getTrick();
-      const wizard = document.getElementById("wizard");
-      removeClasses(wizard);
-      void wizard.offsetWidth;
-      wizard.classList.add(getTrickClass());
-    };
+      document.getElementById("result").innerHTML = getTrick()
+      const wizard = document.getElementById("wizard")
+      removeClasses(wizard)
+      void wizard.offsetWidth
+      wizard.classList.add(getTrickClass())
+    }
 
-    document.getElementById("wizard").addEventListener("click", manifestTrick);
-    manifestTrick();
+    document.getElementById("wizard").addEventListener("click", manifestTrick)
+    manifestTrick()
   </script>
 </html>
