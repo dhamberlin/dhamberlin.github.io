@@ -1,0 +1,147 @@
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #eee;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(
+    109.6deg,
+    rgb(0, 212, 255) 5.2%,
+    rgb(144, 6, 161) 53.7%,
+    rgb(52, 52, 151) 100.2%
+  );
+  background-size: 400% 200%;
+  animation: gradient 420s ease infinite;
+}
+
+.container {
+  margin: auto;
+  padding: 0 13px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#wizard {
+  max-width: min(420px, 90%);
+  max-height: 50%;
+  cursor: pointer;
+}
+
+p {
+  text-align: center;
+  text-shadow: 2px 2px #333;
+  margin: 0;
+  padding: 4px 0;
+}
+
+#result-container {
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0;
+}
+
+#result {
+  text-align: center;
+  text-shadow: 2px 2px #333;
+  margin: 0;
+}
+
+#result::first-letter {
+  text-transform: capitalize;
+}
+
+a {
+  font-size: small;
+  display: block;
+  text-align: center;
+  color: #eee;
+}
+
+/* Trick animations */
+@keyframes jump {
+  0% {
+    transform: translateY(0) rotateZ(0);
+  }
+  40% {
+    transform: translateY(-2.6%) rotateZ(-2deg);
+  }
+  50% {
+    transform: translateY(-3%) rotateZ(0);
+  }
+  60% {
+    transform: translateY(-2.6%) rotateZ(0.6deg);
+  }
+  100% {
+    transform: translateY(0) rotateZ(0);
+  }
+}
+.jump {
+  animation: jump 0.3s ease-in-out;
+}
+
+@keyframes flip {
+  0% {
+    transform: translateY(0) rotateZ(0);
+  }
+  33% {
+    transform: translateY(-10%) rotateZ(120deg);
+  }
+  66% {
+    transform: translateY(-10%) rotateZ(240deg);
+  }
+  100% {
+    transform: translateY(0) rotateZ(360deg);
+  }
+}
+.flip {
+  animation: flip 0.3s linear;
+}
+
+@keyframes fuckphysics {
+  0% {
+    transform: translateY(0) rotateZ(0);
+  }
+  15% {
+    transform: translateY(-13%) rotateZ(20deg);
+  }
+  22% {
+    transform: translateY(-17%) rotateZ(-240deg);
+  }
+  33% {
+    transform: translateY(-19%) rotateZ(-270deg);
+  }
+  66% {
+    transform: translateY(-21%) rotateZ(-274deg);
+  }
+  80% {
+    transform: translateY(-6%) rotateZ(10deg);
+  }
+  100% {
+    transform: translateY(0) rotateZ(0);
+  }
+}
+.fuck-physics {
+  animation: fuckphysics 1.2s ease-out;
+}
