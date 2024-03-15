@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🛹🧙‍♂️</title>
+    <link rel="stylesheet" href="tricks.css" />
 
     <style>
       @keyframes gradient {
@@ -39,6 +40,11 @@
       .container {
         margin: auto;
         padding: 0 13px;
+        height: 100%;
+      }
+
+      .inner-container {
+        position: relative;
       }
 
       .stack {
@@ -46,13 +52,69 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100%;
+      }
+
+      #wizard-container {
+        max-width: min(420px, 90%);
+        max-height: 50vh;
+      }
+
+      @keyframes wobble {
+        0% {
+          transform: rotateZ(-3deg);
+        }
+        100% {
+          transform: rotateZ(3deg);
+        }
+      }
+
+      @keyframes bounce {
+        0% {
+          transform: translateY(-3px);
+        }
+        100% {
+          transform: translateY(3px);
+        }
+      }
+
+      .boombox-container {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 18%;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+      }
+      .boombox-container:hover {
+        transform: scale(1.2);
+      }
+      .boombox-container.on {
+        left: 70%;
+        bottom: 95%;
+        transform: scale(2);
+      }
+      .boombox-container.on:hover {
+        transform: scale(2.2);
+      }
+
+      .on .bounce {
+        animation: bounce 4s ease-in-out alternate-reverse infinite;
+      }
+
+      #boombox {
+        width: 100%;
+        transition: all 0.1s ease-in-out;
+      }
+      .on #boombox {
+        animation: wobble 5s ease-in-out alternate-reverse infinite;
+      }
+      .on #boombox:hover {
+        transform: scale(1.1);
       }
 
       #wizard {
-        max-width: min(420px, 90%);
-        max-height: 50%;
         cursor: pointer;
+        width: 100%;
       }
 
       p {
@@ -86,73 +148,6 @@
         text-align: center;
         color: #eee;
       }
-
-      /* Trick animations */
-      @keyframes jump {
-        0% {
-          transform: translateY(0) rotateZ(0);
-        }
-        40% {
-          transform: translateY(-2.6%) rotateZ(-2deg);
-        }
-        50% {
-          transform: translateY(-3%) rotateZ(0);
-        }
-        60% {
-          transform: translateY(-2.6%) rotateZ(0.6deg);
-        }
-        100% {
-          transform: translateY(0) rotateZ(0);
-        }
-      }
-      .jump {
-        animation: jump 0.3s ease-in-out;
-      }
-
-      @keyframes flip {
-        0% {
-          transform: translateY(0) rotateZ(0);
-        }
-        33% {
-          transform: translateY(-10%) rotateZ(120deg);
-        }
-        66% {
-          transform: translateY(-10%) rotateZ(240deg);
-        }
-        100% {
-          transform: translateY(0) rotateZ(360deg);
-        }
-      }
-      .flip {
-        animation: flip 0.3s linear;
-      }
-
-      @keyframes fuckphysics {
-        0% {
-          transform: translateY(0) rotateZ(0);
-        }
-        15% {
-          transform: translateY(-13%) rotateZ(20deg);
-        }
-        22% {
-          transform: translateY(-17%) rotateZ(-240deg);
-        }
-        33% {
-          transform: translateY(-19%) rotateZ(-270deg);
-        }
-        66% {
-          transform: translateY(-21%) rotateZ(-274deg);
-        }
-        80% {
-          transform: translateY(-6%) rotateZ(10deg);
-        }
-        100% {
-          transform: translateY(0) rotateZ(0);
-        }
-      }
-      .fuck-physics {
-        animation: fuckphysics 1.2s ease-out;
-      }
     </style>
 
     <script
@@ -163,17 +158,32 @@
   </head>
   <body>
     <div class="container stack">
-      <img
-        src="blink-wizard.gif"
-        alt="skate wizard shredding gnar"
-        id="wizard"
-      />
-      <div class="row">
-        <div id="result-container">
-          <h3 id="result"></h3>
+      <div class="inner-container stack">
+        <div class="boombox-container">
+          <div class="bounce">
+            <img
+              id="boombox"
+              src="boombox.png"
+              alt="boombox - click to play or pause tunes"
+            />
+          </div>
         </div>
-        <p>Tap the wizard for a fresh trick</p>
-        <a href="https://michaelchsiung.itch.io/">Check out Skate Wizards</a>
+
+        <div id="wizard-container">
+          <img
+            src="blink-wizard.gif"
+            alt="skate wizard shredding gnar"
+            id="wizard"
+          />
+        </div>
+
+        <div class="row">
+          <div id="result-container">
+            <h3 id="result"></h3>
+          </div>
+          <p>Tap the wizard for a fresh trick</p>
+          <a href="https://michaelchsiung.itch.io/">Check out Skate Wizards</a>
+        </div>
       </div>
     </div>
   </body>

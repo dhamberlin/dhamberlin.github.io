@@ -1,0 +1,65 @@
+@keyframes jump {
+  0% {
+    transform: translateY(0) rotateZ(0);
+  }
+  40% {
+    transform: translateY(-2.6%) rotateZ(-2deg);
+  }
+  50% {
+    transform: translateY(-3%) rotateZ(0);
+  }
+  60% {
+    transform: translateY(-2.6%) rotateZ(0.6deg);
+  }
+  100% {
+    transform: translateY(0) rotateZ(0);
+  }
+}
+.jump {
+  animation: jump 0.3s ease-in-out;
+}
+
+@keyframes flip {
+  0% {
+    transform: translateY(0) rotateZ(0);
+  }
+  33% {
+    transform: translateY(-10%) rotateZ(120deg);
+  }
+  66% {
+    transform: translateY(-10%) rotateZ(240deg);
+  }
+  100% {
+    transform: translateY(0) rotateZ(360deg);
+  }
+}
+.flip {
+  animation: flip 0.3s linear;
+}
+
+@keyframes fuckphysics {
+  0% {
+    transform: translateY(0) rotateZ(0);
+  }
+  15% {
+    transform: translateY(-13%) rotateZ(20deg);
+  }
+  22% {
+    transform: translateY(-17%) rotateZ(-240deg);
+  }
+  33% {
+    transform: translateY(-19%) rotateZ(-270deg);
+  }
+  66% {
+    transform: translateY(-21%) rotateZ(-274deg);
+  }
+  80% {
+    transform: translateY(-6%) rotateZ(10deg);
+  }
+  100% {
+    transform: translateY(0) rotateZ(0);
+  }
+}
+.fuck-physics {
+  animation: fuckphysics 1.2s ease-out;
+}

@@ -255,3 +255,17 @@ const manifestTrick = () => {
 
 document.getElementById("wizard").addEventListener("click", manifestTrick)
 manifestTrick()
+
+const tunes = document.createElement("audio")
+tunes.src = "synth-wizards.m4a"
+tunes.loop = true
+const boomboxContainer = document.querySelector(".boombox-container")
+document.getElementById("boombox").addEventListener("click", () => {
+  if (tunes.paused) {
+    tunes.play()
+    boomboxContainer.classList.add("on")
+    return
+  }
+  tunes.pause()
+  boomboxContainer.classList.remove("on")
+})
