@@ -238,7 +238,7 @@ const getTrickClass = () => {
 
   const rand = Math.random()
   if (rand < 0.2) return trickClasses.fuckPhysics
-  if (rand < 0.3) return trickClasses.flip
+  if (rand < 0.4) return trickClasses.flip
   return trickClasses.jump
 }
 
