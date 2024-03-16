@@ -259,6 +259,7 @@ manifestTrick()
 const tunes = document.createElement("audio")
 tunes.src = "synth-wizards.m4a"
 tunes.loop = true
+tunes.volume = 0.8
 const boomboxContainer = document.querySelector(".boombox-container")
 document.getElementById("boombox").addEventListener("click", () => {
   if (tunes.paused) {
