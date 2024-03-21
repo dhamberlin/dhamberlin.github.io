@@ -259,8 +259,7 @@ const manifestTrick = () => {
 const forward = () => wizardContainer.style.zIndex = '420'
 const backward = () => wizardContainer.style.zIndex = ''
 wizardContainer.addEventListener("click", manifestTrick)
-wizardContainer.addEventListener("transitionstart", forward)
-
+wizardContainer.addEventListener("animationstart", forward)
 wizardContainer.addEventListener("animationend", backward)
 manifestTrick()
 
