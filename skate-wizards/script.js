@@ -245,15 +245,23 @@ const getTrickClass = () => {
 const removeClasses = (wizardEl) =>
   Object.values(trickClasses).forEach((c) => wizardEl.classList.remove(c))
 
+const wizardContainer = document.getElementById("wizard-container")
+
 const manifestTrick = () => {
   document.getElementById("result").innerHTML = getTrick()
-  const wizard = document.getElementById("wizard")
-  removeClasses(wizard)
-  void wizard.offsetWidth
-  wizard.classList.add(getTrickClass())
+  wizardContainer.style.zIndex = '420'
+  removeClasses(wizardContainer)
+  void wizardContainer.offsetWidth
+  wizardContainer.classList.add(getTrickClass())
+
 }
 
-document.getElementById("wizard").addEventListener("click", manifestTrick)
+const forward = () => wizardContainer.style.zIndex = '420'
+const backward = () => wizardContainer.style.zIndex = ''
+wizardContainer.addEventListener("click", manifestTrick)
+wizardContainer.addEventListener("transitionstart", forward)
+
+wizardContainer.addEventListener("animationend", backward)
 manifestTrick()
 
 const tunes = document.createElement("audio")
@@ -261,7 +269,8 @@ tunes.src = "synth-wizards.m4a"
 tunes.loop = true
 tunes.volume = 0.5
 const boomboxContainer = document.querySelector(".boombox-container")
-document.getElementById("boombox").addEventListener("click", () => {
+
+boomboxContainer.addEventListener("click", () => {
   if (tunes.paused) {
     tunes.play()
     boomboxContainer.classList.add("on")
