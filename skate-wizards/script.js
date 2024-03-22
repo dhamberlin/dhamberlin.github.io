@@ -278,3 +278,24 @@ boomboxContainer.addEventListener("click", () => {
   tunes.pause()
   boomboxContainer.classList.remove("on")
 })
+
+const hideDialog = () => {
+  document.getElementById('dialog').classList.add('hidden')
+}
+document.getElementById('close-dialog').addEventListener('click', hideDialog)
+
+document.getElementById('dialog').addEventListener('click', (e) => {
+  if (e.target.id === 'dialog') {
+    hideDialog()
+  }
+})
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    hideDialog()
+  }
+})
+
+document.getElementById('info-icon').addEventListener('click', () => {
+  document.getElementById('dialog').classList.remove('hidden')
+})
