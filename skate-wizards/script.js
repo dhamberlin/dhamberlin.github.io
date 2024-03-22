@@ -249,15 +249,14 @@ const wizardContainer = document.getElementById("wizard-container")
 
 const manifestTrick = () => {
   document.getElementById("result").innerHTML = getTrick()
-  wizardContainer.style.zIndex = '420'
+  wizardContainer.style.zIndex = "420"
   removeClasses(wizardContainer)
   void wizardContainer.offsetWidth
   wizardContainer.classList.add(getTrickClass())
-
 }
 
-const forward = () => wizardContainer.style.zIndex = '420'
-const backward = () => wizardContainer.style.zIndex = ''
+const forward = () => (wizardContainer.style.zIndex = "420")
+const backward = () => (wizardContainer.style.zIndex = "")
 wizardContainer.addEventListener("click", manifestTrick)
 wizardContainer.addEventListener("animationstart", forward)
 wizardContainer.addEventListener("animationend", backward)
@@ -279,23 +278,25 @@ boomboxContainer.addEventListener("click", () => {
   boomboxContainer.classList.remove("on")
 })
 
+const dialogWrapper = document.getElementById("dialog-wrapper")
+
 const hideDialog = () => {
-  document.getElementById('dialog').classList.add('hidden')
+  dialogWrapper.classList.add("hidden")
 }
-document.getElementById('close-dialog').addEventListener('click', hideDialog)
+document.getElementById("close-dialog").addEventListener("click", hideDialog)
 
-document.getElementById('dialog').addEventListener('click', (e) => {
-  if (e.target.id === 'dialog') {
+dialogWrapper.addEventListener("click", (e) => {
+  if (e.target.id === "dialog") {
     hideDialog()
   }
 })
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
     hideDialog()
   }
 })
 
-document.getElementById('info-icon').addEventListener('click', () => {
-  document.getElementById('dialog').classList.remove('hidden')
+document.getElementById("info-icon").addEventListener("click", () => {
+  dialogWrapper.classList.remove("hidden")
 })
