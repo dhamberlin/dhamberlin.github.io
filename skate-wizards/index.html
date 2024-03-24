@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="tricks.css" />
 
     <style>
+      :root {
+        --inner-width: min(80vw, min(420px, 50vh));
+      }
+
       @keyframes gradient {
         0% {
           background-position: 0% 0%;
@@ -42,7 +46,7 @@
 
       .inner-container {
         position: relative;
-        max-width: min(80vw, min(420px, 50vh));
+        max-width: var(--inner-width);
       }
 
       .stack {
@@ -53,7 +57,7 @@
       }
 
       #wizard-container {
-        max-width: min(80vw, min(420px, 50vh));
+        max-width: 100%;
         max-height: 50vh;
         transform: rotateZ(1deg);
       }
@@ -165,19 +169,39 @@
 
       #info-container {
         width: 112px;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
+        height: 84px;
       }
 
-      #info-icon {
-        font-size: 24px;
+      #sauce-container {
+        height: 78px;
+        position: absolute;
+        right: calc(50% - 66px);
+        bottom: 0;
+        transition: all 0.1s ease-in-out;
+        visibility: visible !important;
+      }
+
+      #sauce-container:hover {
+        transform: scale(1.2);
+      }
+
+
+      .sauced #sauce-container {
+        z-index: 4200;
+        height: calc(var(--inner-width) * .6);
+        bottom: 100%;
+        right: calc(50% - 32px);
+        transform: translateY(20%);
+      }
+
+      #sauce {
+        height: 100%;
         cursor: pointer;
         transition: all 0.1s ease-in-out;
       }
 
-      #info-icon:hover {
-        transform: scale(1.2);
+      .sauced #sauce {
+        transform: rotateZ(100deg);
       }
 
       a {
@@ -186,31 +210,49 @@
         color: #eee;
       }
 
-      #dialog {
+      #backdrop {
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.7);
         z-index: 421;
         display: flex;
         justify-content: center;
         align-items: center;
+        visibility: hidden;
+      }
+
+      .sauced #backdrop {
+        visibility: visible;
       }
 
       #dialog-content {
-        position: relative;
+        position: absolute;
         border-radius: 16px;
-        max-width: min(420px, 80%);
+        width: 100%;
+        max-height: calc(100% - 100px);
         background-color: rgba(0, 0, 0, 0.7);
         box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+        visibility: hidden;
+        z-index: 422;
+        bottom: 0;
+      }
+
+      .sauced #dialog-content {
+        position: absolute;
+        visibility: visible;
+        display: flex;
+        bottom: unset;
       }
 
       .dialog-inner {
         padding: 32px;
         border-radius: 16px;
         background: rgba(0, 0, 0, 0.3);
+        max-height: 100%;
+        overflow-y: scroll;
       }
 
       .dialog-inner p {
@@ -228,10 +270,6 @@
         display: flex;
         justify-content: flex-start;
         align-items: flex-end;
-      }
-
-      .hidden {
-        visibility: hidden;
       }
     </style>
 
@@ -252,6 +290,12 @@
           />
         </div>
 
+    
+
+        <div id="result-container">
+          <h3 id="result"></h3>
+        </div>
+
         <div class="boombox-container">
           <div class="bounce">
             <img
@@ -262,17 +306,11 @@
           </div>
         </div>
 
-        <div id="result-container">
-          <h3 id="result"></h3>
+       
+        <div id="info-container">
+          <!-- holds space for boombox and sauce icons -->
         </div>
 
-        <div id="info-container">
-          <p id="info-icon">&#9432;</p>
-        </div>
-      </div>
-    </div>
-    <div id="dialog-wrapper" class="hidden">
-      <div id="dialog">
         <div id="dialog-content">
           <div class="dialog-inner">
             <p>
@@ -291,9 +329,19 @@
             </p>
           </div>
           <div id="close-dialog">&#x2715;</div>
-        </div>
+
+          <div id="sauce-container">
+            <img
+              id="sauce"
+              src="sauce.png"
+              alt="info icon - click for more information"
+            />
+          </div>
+      </div>
+
       </div>
     </div>
+    <div id="backdrop"></div>
   </body>
   <script src="script.js"></script>
 </html>

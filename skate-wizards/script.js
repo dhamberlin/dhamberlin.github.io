@@ -278,15 +278,16 @@ boomboxContainer.addEventListener("click", () => {
   boomboxContainer.classList.remove("on")
 })
 
-const dialogWrapper = document.getElementById("dialog-wrapper")
+const sauceContainer = document.getElementById("sauce-container")
 
 const hideDialog = () => {
-  dialogWrapper.classList.add("hidden")
+  document.body.classList.remove("sauced")
 }
+
 document.getElementById("close-dialog").addEventListener("click", hideDialog)
 
-dialogWrapper.addEventListener("click", (e) => {
-  if (e.target.id === "dialog") {
+document.getElementById("backdrop").addEventListener("click", (e) => {
+  if (e.target.id === "backdrop") {
     hideDialog()
   }
 })
@@ -297,6 +298,13 @@ document.addEventListener("keydown", (e) => {
   }
 })
 
-document.getElementById("info-icon").addEventListener("click", () => {
-  dialogWrapper.classList.remove("hidden")
+
+sauceContainer.addEventListener("click", () => {
+  console.log('sup')
+  if (document.body.classList.contains("sauced")) {
+    console.log('dog')
+    return hideDialog()
+  }
+  console.log('bub')
+  document.body.classList.add("sauced")
 })
