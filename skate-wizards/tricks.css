@@ -63,3 +63,27 @@
 .fuck-physics {
   animation: fuckphysics 1.2s ease-out;
 }
+
+@keyframes manual {
+  13% {
+    transform: rotateZ(-11deg)
+  }
+  42% {
+    transform: rotateZ(-10deg)
+  }
+  52% {
+    transform: rotateZ(-11deg)
+  }
+  65% {
+    transform: rotateZ(-10deg)
+  }
+  88% {
+    transform: rotateZ(-10deg)
+  }
+  100% {
+    rotateZ(0)
+  }
+}
+.manual {
+  animation: manual 1.4s, ease-in-out;
+}

@@ -225,6 +225,7 @@ const trickClasses = {
   jump: "jump",
   flip: "flip",
   fuckPhysics: "fuck-physics",
+  manual: "manual"
 }
 
 const getQueryTrick = () => {
@@ -239,6 +240,7 @@ const getTrickClass = () => {
   const rand = Math.random()
   if (rand < 0.2) return trickClasses.fuckPhysics
   if (rand < 0.4) return trickClasses.flip
+  if (rand < .6) return trickClasses.manual
   return trickClasses.jump
 }
 
