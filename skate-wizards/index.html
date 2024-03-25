@@ -9,6 +9,7 @@
     <style>
       :root {
         --inner-width: min(90vw, min(420px, 50vh));
+        --sauce-height: 54px;
       }
 
       @keyframes gradient {
@@ -47,6 +48,10 @@
       .inner-container {
         position: relative;
         max-width: var(--inner-width);
+        gap: 8px;
+        margin-top: 42px;
+        margin-bottom: 16px;
+        bottom: 0;
       }
 
       .stack {
@@ -54,6 +59,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 8px;
       }
 
       #wizard-container {
@@ -147,7 +153,7 @@
       }
 
       #result-container {
-        min-height: 5rem;
+        min-height: 2.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -169,11 +175,11 @@
 
       #info-container {
         width: 112px;
-        height: 84px;
+        height: var(--sauce-height);
       }
 
       #sauce-container {
-        height: 78px;
+        height: var(--sauce-height);
         position: absolute;
         right: calc(50% - 66px);
         bottom: 0;
